@@ -14,7 +14,9 @@ class FindmouseCli < Formula
   # 16.0 取自上游的 swift-tools-version: 6.0，**不是量出來的**——
   # 上游作者的機器上只有 Xcode 27.0 Beta 4，沒有 Xcode 16 的樣本。
   depends_on xcode: ["16.0", :build]
-  depends_on macos: ">= :sonoma"
+  # 裸符號＝這版或更新。字串比較格式 ">= :sonoma" 在 formula 是**硬失敗**
+  # （`unknown or unsupported macOS version`，實測），不是像 cask 那樣只吐警告。
+  depends_on macos: :sonoma
 
   def install
     system "swift", "build", "--disable-sandbox", "-c", "release", "--product", "findmouse"

@@ -15,7 +15,11 @@ cask "findmouse" do
   # 上游，release.sh 跑完就把該換的兩個值印出來。加一個要跟兩段式 version 對齊的
   # 自訂 strategy，只是多一個會壞掉的活動零件。
 
-  depends_on macos: ">= :sonoma" # 上游的 Package.swift 寫 macOS 14
+  # 上游的 Package.swift 寫 macOS 14。裸符號就是「這版或更新」——`brew info` 對
+  # 它回 `Required: macOS >= 14`（實測，與舊寫法逐字相同）。
+  # 別寫成字串比較格式 ">= :sonoma"：cask 那邊是 deprecated 警告，
+  # formula 那邊直接硬失敗（unknown or unsupported macOS version）。
+  depends_on macos: :sonoma
 
   app "FindMouse.app"
 
