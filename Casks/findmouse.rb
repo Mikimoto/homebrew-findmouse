@@ -12,12 +12,15 @@ cask "findmouse" do
   homepage "https://github.com/Mikimoto/FindMouse"
 
   # 刻意沒有寫 `livecheck do` 區塊。**但這不等於沒有 livecheck**——Homebrew 會從
-  # 上面那個 GitHub release url 推一個預設策略出來，而且它認得兩段式 version 的
-  # 第一段：v0.5.0 發布後、這個檔還停在 0.4.0 時，`brew audit --online` 實測回
-  # 「Version '0.4.0,a214cd9' differs from '0.5.0' retrieved by livecheck」。
-  # 所以自訂 strategy 不必寫：預設那個已經在做提醒的事，而寫一個要跟兩段式
-  # version 對齊的版本只是多一個會壞掉的活動零件。
-  # 順帶：這條 audit 也就成了「忘記更新這個檔」的守衛。
+  # 上面那個 GitHub release url 推一個預設策略出來，而它只吐得出 `0.5.0`，
+  # 認不得兩段式 version。後果是 `brew audit --online` **必定**報一筆
+  # 「Version '<版本>,<sha>' differs from '<版本>' retrieved by livecheck」——
+  # 對的版本也一樣報（v0.5.0 這一輪實測：更新前後都報，只是被比較的字串換了）。
+  #
+  # 這一筆是已知的假陽性，不是待修：要它閉嘴就得寫一個把 short sha 也組進去的
+  # 自訂 strategy，而那正是「多一個會壞掉的活動零件」——維護者就是上游本人，
+  # release.sh 跑完直接把該換的兩個值印在螢幕上，不需要別人來提醒。
+  # 所以驗這個 cask 用 `brew audit --cask`（不帶 --online，實測乾淨）。
 
   # 上游的 Package.swift 寫 macOS 14。裸符號就是「這版或更新」——`brew info` 對
   # 它回 `Required: macOS >= 14`（實測，與舊寫法逐字相同）。

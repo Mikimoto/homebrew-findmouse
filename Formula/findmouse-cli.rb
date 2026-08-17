@@ -13,7 +13,7 @@ class FindmouseCli < Formula
   #
   # 16.0 取自上游的 swift-tools-version: 6.0，**不是量出來的**——
   # 上游作者的機器上只有 Xcode 27 的 beta，沒有 Xcode 16 的樣本。
-  #（不寫是哪一個 beta：那個號碼每次更新就爛掉一次，而它不是重點。）
+  # （不寫是哪一個 beta：那個號碼每次更新就爛掉一次，而它不是重點。）
   depends_on xcode: ["16.0", :build]
   # 裸符號＝這版或更新。字串比較格式 ">= :sonoma" 在 formula 是**硬失敗**
   # （`unknown or unsupported macOS version`，實測），不是像 cask 那樣只吐警告。
