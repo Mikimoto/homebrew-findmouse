@@ -1,8 +1,8 @@
 class FindmouseCli < Formula
   desc "Command-line client for the FindMouse menu bar app"
   homepage "https://github.com/Mikimoto/FindMouse"
-  url "https://github.com/Mikimoto/FindMouse/archive/refs/tags/v0.4.0.tar.gz"
-  sha256 "8dfe21745b40b59e7690b24121241655dd478a1f69214eb79c79921020e41a30"
+  url "https://github.com/Mikimoto/FindMouse/archive/refs/tags/v0.5.0.tar.gz"
+  sha256 "f9cf40405df33bee73b0bc23d55a1e6122c5aad1f11e221adae609682a013550"
   license "Apache-2.0"
 
   # 從原始碼建而不是發預編二進位：實測乾淨編譯 6.26 秒、505,816 bytes、
@@ -12,7 +12,8 @@ class FindmouseCli < Formula
   # 以及那個 asset 的 sha256 維護。
   #
   # 16.0 取自上游的 swift-tools-version: 6.0，**不是量出來的**——
-  # 上游作者的機器上只有 Xcode 27.0 Beta 4，沒有 Xcode 16 的樣本。
+  # 上游作者的機器上只有 Xcode 27 的 beta，沒有 Xcode 16 的樣本。
+  #（不寫是哪一個 beta：那個號碼每次更新就爛掉一次，而它不是重點。）
   depends_on xcode: ["16.0", :build]
   # 裸符號＝這版或更新。字串比較格式 ">= :sonoma" 在 formula 是**硬失敗**
   # （`unknown or unsupported macOS version`，實測），不是像 cask 那樣只吐警告。

@@ -2,8 +2,8 @@ cask "findmouse" do
   # 兩段式 version：產出檔名是 FindMouse-<版本>-<shortsha>.dmg，光靠版本號組不出
   # 下載連結。version.csv.first/second 就是 Homebrew 給這種檔名的機制。
   # 兩個值都由上游的 Scripts/release.sh 跑完之後直接印在螢幕上。
-  version "0.4.0,a214cd9"
-  sha256 "adc7eeeaa2d8f4aecf4baa5aaad631b2cb6bb5b1fbf91d5176a0d54f0bb30f3a"
+  version "0.5.0,834a98f"
+  sha256 "314da96338a780c538f8921705422bac788684a4fed2d95269664a0e0108020f"
 
   url "https://github.com/Mikimoto/FindMouse/releases/download/v#{version.csv.first}/FindMouse-#{version.csv.first}-#{version.csv.second}.dmg",
       verified: "github.com/Mikimoto/FindMouse/"
@@ -11,9 +11,13 @@ cask "findmouse" do
   desc "Menu bar app that summons a cat to sit beside your lost cursor"
   homepage "https://github.com/Mikimoto/FindMouse"
 
-  # 刻意沒有 livecheck。它的用途是讓維護者發現上游出了新版——而這裡的維護者就是
-  # 上游，release.sh 跑完就把該換的兩個值印出來。加一個要跟兩段式 version 對齊的
-  # 自訂 strategy，只是多一個會壞掉的活動零件。
+  # 刻意沒有寫 `livecheck do` 區塊。**但這不等於沒有 livecheck**——Homebrew 會從
+  # 上面那個 GitHub release url 推一個預設策略出來，而且它認得兩段式 version 的
+  # 第一段：v0.5.0 發布後、這個檔還停在 0.4.0 時，`brew audit --online` 實測回
+  # 「Version '0.4.0,a214cd9' differs from '0.5.0' retrieved by livecheck」。
+  # 所以自訂 strategy 不必寫：預設那個已經在做提醒的事，而寫一個要跟兩段式
+  # version 對齊的版本只是多一個會壞掉的活動零件。
+  # 順帶：這條 audit 也就成了「忘記更新這個檔」的守衛。
 
   # 上游的 Package.swift 寫 macOS 14。裸符號就是「這版或更新」——`brew info` 對
   # 它回 `Required: macOS >= 14`（實測，與舊寫法逐字相同）。
