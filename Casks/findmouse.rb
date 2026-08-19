@@ -2,8 +2,8 @@ cask "findmouse" do
   # 兩段式 version：產出檔名是 FindMouse-<版本>-<shortsha>.dmg，光靠版本號組不出
   # 下載連結。version.csv.first/second 就是 Homebrew 給這種檔名的機制。
   # 兩個值都由上游的 Scripts/release.sh 跑完之後直接印在螢幕上。
-  version "0.5.0,834a98f"
-  sha256 "314da96338a780c538f8921705422bac788684a4fed2d95269664a0e0108020f"
+  version "0.5.1,ddbd509"
+  sha256 "55838054049669c88232faa124037e63e7190784f539599219fa2461046e93a5"
 
   url "https://github.com/Mikimoto/FindMouse/releases/download/v#{version.csv.first}/FindMouse-#{version.csv.first}-#{version.csv.second}.dmg",
       verified: "github.com/Mikimoto/FindMouse/"
@@ -30,9 +30,16 @@ cask "findmouse" do
 
   app "FindMouse.app"
 
-  # 兩條路徑都是實測的：packs 與 control socket 在 Application Support/FindMouse/，
-  # 設定走 UserDefaults.standard（bundle id tw.com.deepthought.findmouse）。
+  # **三條都要列，而且理由不對稱。** v0.5.1 起 App 跑在沙盒裡，家搬進容器——
+  # 但**舊位置沒有變空**：搬移是複製、刻意不刪原檔（README〈從 v0.5.0 以前升級
+  # 上來〉就是這樣寫給使用者的），而還沒按過設定裡「搬過來…」的人整批圖組都還在
+  # 那裡。只列舊的會刪掉搬移功能存在要救的那一批又漏掉新家；只列新的會留下舊的。
+  #
+  # Preferences 那條在升級過 v0.5.1 的機器上其實已經空了——`cfprefsd` 認得容器，
+  # 會把 plist **搬**進去而不是複製（實測舊檔直接消失）。留著是為了從未升級就
+  # 直接 zap 的人。
   zap trash: [
+    "~/Library/Containers/tw.com.deepthought.findmouse",
     "~/Library/Application Support/FindMouse",
     "~/Library/Preferences/tw.com.deepthought.findmouse.plist",
   ]
