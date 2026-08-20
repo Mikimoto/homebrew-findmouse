@@ -2,8 +2,8 @@ cask "findmouse" do
   # 兩段式 version：產出檔名是 FindMouse-<版本>-<shortsha>.dmg，光靠版本號組不出
   # 下載連結。version.csv.first/second 就是 Homebrew 給這種檔名的機制。
   # 兩個值都由上游的 Scripts/release.sh 跑完之後直接印在螢幕上。
-  version "0.5.1,ddbd509"
-  sha256 "55838054049669c88232faa124037e63e7190784f539599219fa2461046e93a5"
+  version "0.5.2,da9a653"
+  sha256 "e246ead88b0e218f2e521f81c637766bd6b2884745db1bebee38635a547ff87b"
 
   url "https://github.com/Mikimoto/FindMouse/releases/download/v#{version.csv.first}/FindMouse-#{version.csv.first}-#{version.csv.second}.dmg",
       verified: "github.com/Mikimoto/FindMouse/"
@@ -32,7 +32,7 @@ cask "findmouse" do
 
   # **三條都要列，而且理由不對稱。** v0.5.1 起 App 跑在沙盒裡，家搬進容器——
   # 但**舊位置沒有變空**：搬移是複製、刻意不刪原檔（README〈從 v0.5.0 以前升級
-  # 上來〉就是這樣寫給使用者的），而還沒按過設定裡「搬過來…」的人整批圖組都還在
+  # 上來，圖組不見了〉就是這樣寫給使用者的），而還沒按過設定裡「搬過來…」的人整批圖組都還在
   # 那裡。只列舊的會刪掉搬移功能存在要救的那一批又漏掉新家；只列新的會留下舊的。
   #
   # Preferences 那條在升級過 v0.5.1 的機器上其實已經空了——`cfprefsd` 認得容器，
