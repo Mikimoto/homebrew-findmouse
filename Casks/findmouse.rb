@@ -2,8 +2,8 @@ cask "findmouse" do
   # 兩段式 version：產出檔名是 FindMouse-<版本>-<shortsha>.dmg，光靠版本號組不出
   # 下載連結。version.csv.first/second 就是 Homebrew 給這種檔名的機制。
   # 兩個值都由上游的 Scripts/release.sh 跑完之後直接印在螢幕上。
-  version "0.5.2,da9a653"
-  sha256 "e246ead88b0e218f2e521f81c637766bd6b2884745db1bebee38635a547ff87b"
+  version "0.5.3,7353142"
+  sha256 "7e7fa3a8a7d69d4610afe3b272fa3fcf4458a490d6750c9a5dd17a9d6044dfff"
 
   url "https://github.com/Mikimoto/FindMouse/releases/download/v#{version.csv.first}/FindMouse-#{version.csv.first}-#{version.csv.second}.dmg",
       verified: "github.com/Mikimoto/FindMouse/"

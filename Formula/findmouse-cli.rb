@@ -1,8 +1,8 @@
 class FindmouseCli < Formula
   desc "Command-line client for the FindMouse menu bar app"
   homepage "https://github.com/Mikimoto/FindMouse"
-  url "https://github.com/Mikimoto/FindMouse/archive/refs/tags/v0.5.2.tar.gz"
-  sha256 "d0ba5f8612633bdfc3a82227052ead506589c386974c7410d26050d18d492b07"
+  url "https://github.com/Mikimoto/FindMouse/archive/refs/tags/v0.5.3.tar.gz"
+  sha256 "9bdeb2c6b7c88030fd54497dfb010de12994d18783edc8f48ac6bac40e34f135"
   license "Apache-2.0"
 
   # 從原始碼建而不是發預編二進位：實測乾淨編譯 6.26 秒、505,816 bytes、
