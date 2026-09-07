@@ -5,8 +5,7 @@ cask "findmouse" do
   version "1.1.0,ee71bbf"
   sha256 "38f41dc693ce3be22e45768c3bc06bcfbe4961f8b1b93f5e52820f27576036ce"
 
-  url "https://github.com/Mikimoto/FindMouse/releases/download/v#{version.csv.first}/FindMouse-#{version.csv.first}-#{version.csv.second}.dmg",
-      verified: "github.com/Mikimoto/FindMouse/"
+  url "https://github.com/Mikimoto/FindMouse/releases/download/v#{version.csv.first}/FindMouse-#{version.csv.first}-#{version.csv.second}.dmg"
   name "FindMouse"
   desc "Menu bar app that summons a cat to sit beside your lost cursor"
   homepage "https://github.com/Mikimoto/FindMouse"
